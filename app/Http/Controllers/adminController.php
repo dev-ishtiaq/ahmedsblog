@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Post;
+
 class adminController extends Controller
 {
     public function post_page()
@@ -13,11 +15,20 @@ class adminController extends Controller
     public function add_post(Request $request)
     {
         $user = Auth->user();
-        user_id = $user->id;
-        name = $user->name;
-        usertype = $user->usertype;
+        $user_id = $user->id;
+        $name = $user->name;
+        $usertype = $user->usertype;
 
+        $post = new Post;
 
+        $post->title = $request->title;
+        $post->description = $request->description;
+        $post->description = $request->description;
+        $post->post_status = 'active';
+        $post->description = $request->description;
 
+        $imageName = time().'.'.$request->image->extension();
+        $request->image->move('postImage', $imagename);
+        $post->image = $imageName;
     }
 }

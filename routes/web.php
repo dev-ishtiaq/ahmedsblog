@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\adminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,17 +17,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('frontend.home');
 });
-Route::get('/', function () {
+Route::get('/blog', function () {
     return view('frontend.blog');
 });
-Route::get('/', function () {
+Route::get('/blog_details', function () {
     return view('frontend.blog_details');
 });
-Route::get('/', function () {
+Route::get('/about', function () {
     return view('frontend.about');
 });
-Route::get('/', function () {
-    return view('frontend.acontact');
+Route::get('/contact', function () {
+    return view('frontend.contact');
 });
 
 Route::get('/dashboard', function () {
