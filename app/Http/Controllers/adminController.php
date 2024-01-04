@@ -10,4 +10,14 @@ class adminController extends Controller
     {
         return view('admin.post_page');
     }
+    public function add_post(Request $request)
+    {
+        $user = Auth->user();
+        user_id = $user->id;
+        name = $user->name;
+        usertype = $user->usertype;
+
+
+
+    }
 }
