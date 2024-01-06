@@ -29,6 +29,12 @@ Route::get('/about', function () {
 Route::get('/contact', function () {
     return view('frontend.contact');
 });
+Route::get('/admin', function () {
+    return view('admin.home');
+});
+Route::get('/add_post', function () {
+    return view('admin.add_post');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
