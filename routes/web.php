@@ -29,14 +29,17 @@ Route::get('/about', function () {
 Route::get('/contact', function () {
     return view('frontend.contact');
 });
-Route::get('/admin', function () {
-    return view('admin.home');
-});
+
+
+Route::get('/home',[adminController::class, 'admin'])->middleware('auth')->name('admin');
+
+
 
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
 
 
 Route::get('/add_post', [adminController::class, 'post_page']);
