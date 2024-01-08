@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\Post;
+use App\Models\User;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -12,6 +12,7 @@ class adminController extends Controller
 {
     public function admin()
     {
+        $usertype=Auth()->user()->usertype;
         if($usertype=='admin')
         {
             return view('admin.home');
@@ -19,6 +20,26 @@ class adminController extends Controller
         else if($usertype=='user'){
             return view('admin.layout');
         }
+        else{
+            return redirect()->back();
+        }
+    }
+
+
+    // -----------
+    public function user()
+    {
+        return view('admin.user_page');
+    }
+    public function add_user(Request $request)
+    {
+        $user = new User;
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->usertype = $request->usertype;
+
     }
 
 

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\adminController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +32,8 @@ Route::get('/contact', function () {
 });
 
 
-Route::get('/home',[adminController::class, 'admin'])->middleware('auth')->name('admin');
+Route::get('/admin',[adminController::class, 'admin'])->middleware('auth')->name('admin');
+Route::get('/user',[adminController::class, 'user'])->middleware('auth')->name('user');
 
 
 
