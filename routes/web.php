@@ -32,16 +32,14 @@ Route::get('/contact', function () {
 Route::get('/admin', function () {
     return view('admin.home');
 });
-Route::get('/add_post', function () {
-    return view('admin.add_post');
-});
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 
-Route::get('post_page', [adminController::class, 'post_page']);
+Route::get('/add_post', [adminController::class, 'post_page']);
 
 require __DIR__.'/auth.php';
 
