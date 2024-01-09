@@ -34,10 +34,12 @@ Route::get('/contact', function () {
 
 Route::get('/admin',[adminController::class, 'admin'])->middleware('auth')->name('admin');
 Route::get('/user',[adminController::class, 'user'])->middleware('auth')->name('user');
+Route::post('/add_user',[adminController::class, 'add_user'])->middleware('auth')->name('user');
 
 Route::get('/all_user',[adminController::class, 'all_user'])->middleware('auth');
 Route::get('/edit_page/{id}',[adminController::class, 'edit_page'])->middleware('auth');
 Route::put('/edit_user/{id}',[adminController::class, 'edit_user'])->middleware('auth');
+
 Route::get('/delete_user',[adminController::class, 'delete_user'])->middleware('auth');
 
 

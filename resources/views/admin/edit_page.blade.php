@@ -50,7 +50,7 @@
                             <label class="col-md-4 col-form-label text-md-end">{{ __('User Type') }}</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" value="{{$user->usertype}}">
+                                <input type="text" class="form-control" name="usertype" value="{{$user->usertype}}">
                             </div>
                         </div>
 

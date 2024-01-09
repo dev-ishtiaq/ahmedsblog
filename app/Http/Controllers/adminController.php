@@ -31,6 +31,8 @@ class adminController extends Controller
     {
         return view('admin.user_page');
     }
+
+    
     public function add_user(Request $request)
     {
         $user = new User;
@@ -38,7 +40,9 @@ class adminController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = $request->password;
-        $user->usertype = $request->usertype;
+
+        $user->save();
+        return back();
     }
 
     public function all_user()
@@ -46,12 +50,14 @@ class adminController extends Controller
         $user = User::all();
         return view('admin.all_user', compact('user'));
     }
+
     public function edit_page($id)
     {
         $user = User::find($id);
         
         return view('admin.edit_page', compact('user'));
     }
+
     public function edit_user(Request $request, $id)
     {
         $user = User::find($id);
@@ -60,7 +66,7 @@ class adminController extends Controller
         $user->usertype = $request->usertype;
 
         $user->save();
-        return redirect()->back();
+        return back();
     }
 
 
