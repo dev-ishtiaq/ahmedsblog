@@ -49,6 +49,7 @@ class adminController extends Controller
     public function edit_page($id)
     {
         $user = User::find($id);
+        
         return view('admin.edit_page', compact('user'));
     }
     public function edit_user(Request $request, $id)
