@@ -39,7 +39,27 @@ class adminController extends Controller
         $user->email = $request->email;
         $user->password = $request->password;
         $user->usertype = $request->usertype;
+    }
 
+    public function all_user()
+    {
+        $user = User::all();
+        return view('admin.all_user', compact('user'));
+    }
+    public function edit_page($id)
+    {
+        $user = User::find($id);
+        return view('admin.edit_page', compact('user'));
+    }
+    public function edit_user(Request $request, $id)
+    {
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->usertype = $request->usertype;
+
+        $user->save();
+        return redirect()->back();
     }
 
 

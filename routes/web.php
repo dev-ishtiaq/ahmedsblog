@@ -35,6 +35,10 @@ Route::get('/contact', function () {
 Route::get('/admin',[adminController::class, 'admin'])->middleware('auth')->name('admin');
 Route::get('/user',[adminController::class, 'user'])->middleware('auth')->name('user');
 
+Route::get('/all_user',[adminController::class, 'all_user'])->middleware('auth');
+Route::get('/edit_user',[adminController::class, 'edit_user'])->middleware('auth');
+Route::get('/delete_user',[adminController::class, 'delete_user'])->middleware('auth');
+
 
 
 
@@ -44,7 +48,7 @@ Route::get('/dashboard', function () {
 
 
 
-Route::get('/add_post', [adminController::class, 'post_page']);
+Route::get('/add_post', [adminController::class, 'post_page'])->middleware('auth');
 
 require __DIR__.'/auth.php';
 

@@ -152,9 +152,14 @@
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="table-basic.html" aria-expanded="false"><i class="mdi me-2 mdi-table"></i><span
                                     class="hide-menu">All Post</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="{{url('/user')}}" aria-expanded="false">
+                        <li class="sidebar-item dropdown"> <a class="sidebar-link dropdown-toggle waves-effect waves-dark sidebar-link"
+                                href="{{url('/all_user')}}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="mdi me-2 mdi-account-check"></i><span class="hide-menu">User Profile</span></a>
+
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{{url('/user')}}">Add User</a></li>
+                                    <li><a class="dropdown-item" href="{{url('/all_user')}}">All user</a></li>
+                                  </ul>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="icon-material.html" aria-expanded="false"><i
@@ -200,7 +205,7 @@
 
         <div class="page-wrapper">
             @yield('main')
-
+            
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
