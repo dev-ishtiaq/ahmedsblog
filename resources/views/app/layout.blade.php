@@ -67,9 +67,6 @@ https://templatemo.com/tm-551-stand-blog
                 <a class="nav-link" href="{{url('/contact')}}">Contact Us</a>
               </li>
               <li class="nav-item">
-                <a class="btn btn-info btn-sm" href="{{url('/register')}}">Register</a>
-              </li>
-              <li class="nav-item">
                 <a class="btn btn-dark btn-sm" href="{{url('/login')}}">Login</a>
               </li>
             </ul>
