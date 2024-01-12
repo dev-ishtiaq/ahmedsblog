@@ -172,8 +172,7 @@
                                     class="mdi me-2 mdi-book-open-variant"></i><span class="hide-menu">Blank</span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="pages-error-404.html" aria-expanded="false"><i
-                                    class="mdi me-2 mdi-help-circle"></i><span class="hide-menu">Error 404</span></a>
+                                href="{{url('/settings_page')}}" aria-expanded="false"><i class="fa-solid fa-gear"></i><span class="hide-menu">Settings</span></a>
                         </li>
 
                     </ul>
@@ -205,7 +204,7 @@
 
         <div class="page-wrapper">
             @yield('main')
-            
+
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->

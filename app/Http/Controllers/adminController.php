@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\User;
 
+use App\Models\dashboard;
+
 use Illuminate\Support\Facades\Auth;
 
 class adminController extends Controller
@@ -32,7 +34,7 @@ class adminController extends Controller
         return view('admin.user_page');
     }
 
-    
+
     public function add_user(Request $request)
     {
         $user = new User;
@@ -54,7 +56,7 @@ class adminController extends Controller
     public function edit_page($id)
     {
         $user = User::find($id);
-        
+
         return view('admin.edit_page', compact('user'));
     }
 
@@ -92,5 +94,22 @@ class adminController extends Controller
         $imageName = time().'.'.$request->image->extension();
         $request->image->move('postImage', $imagename);
         $post->image = $imageName;
+    }
+    public function settings_page ()
+    {
+        $dashboard = new Dashboard;
+        return view('admin.settings_page', compact('dashboard'));
+    }
+    public function settings (Request $request)
+    {
+        $dashboard = new Dashboard;
+
+        $dashboard->logo = $request->logo;
+        $logoname = time().'.'.$request->logo->extension();
+        $request->logo->move('logo', $logoname);
+        $dashboard->save();
+        return back();
+
+
     }
 }

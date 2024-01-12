@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\adminController;
 use App\Models\User;
+use App\Models\dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,8 @@ Route::get('/edit_page/{id}',[adminController::class, 'edit_page'])->middleware(
 Route::put('/edit_user/{id}',[adminController::class, 'edit_user'])->middleware('auth');
 
 Route::get('/delete_user',[adminController::class, 'delete_user'])->middleware('auth');
+
+Route::get('/settings_page',[adminController::class, 'settings_page'])->middleware('auth');
 
 
 
