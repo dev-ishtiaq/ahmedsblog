@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('favicon');
-            $table->string('bgcolor');
+            // $table->string('bgcolor')->default('red');
             $table->string('logo');
             $table->string('profile_pic');
             $table->timestamps();

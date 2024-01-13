@@ -14,13 +14,15 @@ class adminController extends Controller
 {
     public function admin()
     {
+        $dashboard = dashboard::all();
+        
         $usertype=Auth()->user()->usertype;
         if($usertype=='admin')
         {
-            return view('admin.home');
+            return view('admin.home', compact('dashboard'));
         }
         else if($usertype=='user'){
-            return view('admin.layout');
+            return view('admin.layout', compact('dashboard'));
         }
         else{
             return redirect()->back();
@@ -31,7 +33,7 @@ class adminController extends Controller
     // -----------
     public function user()
     {
-        return view('admin.user_page');
+        return view('admin.user_page', compact('dashboard'));
     }
 
 
@@ -50,7 +52,7 @@ class adminController extends Controller
     public function all_user()
     {
         $user = User::all();
-        return view('admin.all_user', compact('user'));
+        return view('admin.all_user', compact('user,', compact('dashboard')));
     }
 
     public function edit_page($id)
@@ -95,21 +97,28 @@ class adminController extends Controller
         $request->image->move('postImage', $imagename);
         $post->image = $imageName;
     }
+
+
     public function settings_page ()
     {
-        $dashboard = new Dashboard;
+        $dashboard = new dashboard;
         return view('admin.settings_page', compact('dashboard'));
     }
     public function settings (Request $request)
     {
-        $dashboard = new Dashboard;
+        $dashboard = new dashboard;
+        $dashboard->title = $request->title;
+        $dashboard->profile_pic = "no";
 
-        $dashboard->logo = $request->logo;
+        $iconName = time().'.'.$request->favicon->extension();
+        $request->favicon->move('favicon', $iconName);
+        $dashboard->favicon = $iconName;
+
         $logoname = time().'.'.$request->logo->extension();
         $request->logo->move('logo', $logoname);
+        $dashboard->logo = $logoname;
+
         $dashboard->save();
         return back();
-
-
     }
 }
