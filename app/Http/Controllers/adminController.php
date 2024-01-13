@@ -15,14 +15,14 @@ class adminController extends Controller
     public function admin()
     {
         $dashboard = dashboard::all();
-        
+
         $usertype=Auth()->user()->usertype;
         if($usertype=='admin')
         {
             return view('admin.home', compact('dashboard'));
         }
         else if($usertype=='user'){
-            return view('admin.layout', compact('dashboard'));
+            return view('admin.layout');
         }
         else{
             return redirect()->back();
@@ -33,7 +33,7 @@ class adminController extends Controller
     // -----------
     public function user()
     {
-        return view('admin.user_page', compact('dashboard'));
+        return view('admin.user_page');
     }
 
 
@@ -52,7 +52,7 @@ class adminController extends Controller
     public function all_user()
     {
         $user = User::all();
-        return view('admin.all_user', compact('user,', compact('dashboard')));
+        return view('admin.all_user', compact('user,'));
     }
 
     public function edit_page($id)
