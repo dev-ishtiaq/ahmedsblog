@@ -15,7 +15,7 @@
     <title>Material Pro Lite Template by WrapPixel</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/materialpro-lite/" />
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('adminpanel/assets/images/favicon.png')}}">
     <!-- chartist CSS -->
     <link href="{{asset('adminpanel/assets/plugins/chartist-js/dist/chartist.min.css')}}" rel="stylesheet">
     <link href="{{asset('adminpanel/assets/plugins/chartist-js/dist/chartist-init.css')}}" rel="stylesheet">
