@@ -1,4 +1,11 @@
 @extends('admin.layout')
+
+@section('logo')
+    @foreach ($dashboard as $dashboard)
+    <img src="logo/{{$dashboard->logo}}" height="60" width="120" alt="homepage" class="dark-logo" />
+    @endforeach
+@endsection
+
 @section('main')
 <div class="page-breadcrumb">
     <div class="row align-items-center">
@@ -35,7 +42,7 @@
                           </thead>
                           <tbody>
                             @foreach ($user as $user)
-                            <tr> 
+                            <tr>
                                 <td>{{$loop->index+1}}</td>
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
@@ -44,9 +51,9 @@
                                     <a href="{{url('/edit_page',$user->id)}}"><input class="btn btn-dark btn-sm" type="button" value="edit"></a>
                                     <a href="{{url('/delete_user')}}"><input class="btn btn-danger btn-sm" type="button" value="delete"></a>
                                 </td>
-                              </tr> 
+                              </tr>
                             @endforeach
-                            
+
                           </tbody>
                       </table>
                 </div>

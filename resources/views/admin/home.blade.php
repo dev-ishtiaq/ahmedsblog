@@ -1,13 +1,4 @@
 @extends('admin.layout')
-@section('title')
-    @foreach ($dashboard as $dashboard)
-        {{$dashboard->title}}
-    @endforeach
-@endsection
-@section('logo')
-<img src="logo/{{$dashboard->logo}}" height="60" width="120" alt="homepage"
-                                class="dark-logo" />
-@endsection
 @section('main')
 <div class="page-breadcrumb">
     <div class="row align-items-center">
@@ -431,4 +422,10 @@
 
 
 @endsection
+@section('title')
+@foreach ($dashboard as $dashboard)
+<title>{{$dashboard->title}}</title>
+@endforeach
+@endsection
+
 

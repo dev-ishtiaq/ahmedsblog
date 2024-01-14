@@ -33,14 +33,14 @@ class adminController extends Controller
     // -----------
     public function user()
     {
-        return view('admin.user_page');
+        $dashboard = dashboard::all();
+        return view('admin.user_page', compact('dashboard'));
     }
 
 
     public function add_user(Request $request)
     {
         $user = new User;
-
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = $request->password;
@@ -52,14 +52,15 @@ class adminController extends Controller
     public function all_user()
     {
         $user = User::all();
-        return view('admin.all_user', compact('user,'));
+        $dashboard = dashboard::all();
+        return view('admin.all_user', compact('user','dashboard'));
     }
 
     public function edit_page($id)
     {
         $user = User::find($id);
-
-        return view('admin.edit_page', compact('user'));
+        $dashboard = dashboard::all();
+        return view('admin.edit_page', compact('user','dashboard'));
     }
 
     public function edit_user(Request $request, $id)
@@ -76,7 +77,8 @@ class adminController extends Controller
 
     public function post_page()
     {
-        return view('admin.post_page');
+        $dashboard = dashboard::all();
+        return view('admin.post_page', compact('dashboard'));
     }
     public function add_post(Request $request)
     {
@@ -102,11 +104,11 @@ class adminController extends Controller
     public function settings_page ()
     {
         $dashboard = new dashboard;
-        return view('admin.settings_page', compact('dashboard'));
+        $dashboard2 = dashboard::all();
+        return view('admin.settings_page', compact('dashboard','dashboard2'));
     }
     public function settings (Request $request)
     {
-        $dashboard = new dashboard;
         $dashboard->title = $request->title;
         $dashboard->profile_pic = "no";
 

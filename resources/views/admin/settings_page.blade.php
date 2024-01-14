@@ -1,4 +1,11 @@
 @extends('admin.layout')
+
+@section('logo')
+    @foreach ($dashboard2 as $dashboard2)
+    <img src="logo/{{$dashboard2->logo}}" height="60" width="120" alt="homepage" class="dark-logo" />
+    @endforeach
+@endsection
+
 @section('main')
 <div class="container-fluid">
     <div class="row justify-content-center">

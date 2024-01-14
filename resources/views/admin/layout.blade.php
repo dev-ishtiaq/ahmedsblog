@@ -12,9 +12,7 @@
     <meta name="description"
         content="Material Pro Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-
-    <title>@yield('title')</title>
-
+    @yield('title')
     <link rel="canonical" href="https://www.wrappixel.com/templates/materialpro-lite/" />
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('adminpanel/assets/images/favicon.png')}}">
@@ -57,23 +55,7 @@
                     <!-- Logo -->
                     <!-- ============================================================== -->
                     <a class="navbar-brand ms-4" href="{{url('/admin')}}">
-                        <!-- Logo icon -->
-                        <b class="logo-icon">
-                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                            <!-- Dark Logo icon -->
-
-
-                            @yield('logo')
-
-                        </b>
-                        <!--End Logo icon -->
-                        <!-- Logo text -->
-                        <span class="logo-text">
-                            <!-- dark Logo text -->
-                            <img src="" alt="homepage"
-                                class="dark-logo" />
-
-                        </span>
+                       @yield('logo')
                     </a>
                     <!-- ============================================================== -->
                     <!-- End Logo -->
