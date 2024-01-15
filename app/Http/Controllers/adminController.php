@@ -46,7 +46,12 @@ class adminController extends Controller
         return redirect()->back()->with('message', 'post created successfully!');
 
     }
-   
+    public function all_post ()
+    {
+        $dashboard = dashboard::all();
+        $post = post::all();
+        return view('admin.all_post', compact('post','dashboard'));
+    }
 
     public function admin()
     {
