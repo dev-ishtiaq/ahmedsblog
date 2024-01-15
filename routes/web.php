@@ -15,6 +15,10 @@ use App\Models\dashboard;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
 
 Route::get('/', function () {
     return view('frontend.home');
@@ -32,30 +36,31 @@ Route::get('/contact', function () {
     return view('frontend.contact');
 });
 
+// post page routes
+Route::get('/post_page',[adminController::class, 'post_page'])->middleware('auth')->name('admin');
+Route::post('/add_post',[adminController::class, 'add_post'])->middleware('auth')->name('admin');
+Route::get('/all_post',[adminController::class, 'all_post'])->middleware('auth')->name('admin');
+Route::get('/edit_page/{id}',[adminController::class, 'edit_page'])->middleware('auth')->name('admin');
+Route::post('/edit_post/{id}',[adminController::class, 'edit_post'])->middleware('auth')->name('admin');
+Route::get('/delete_post/{id}',[adminController::class, 'delete_post'])->middleware('auth')->name('admin');
+Route::get('/accept_post/{id}',[adminController::class, 'accept_post'])->middleware('auth')->name('admin');
+Route::get('/reject_post/{id}',[adminController::class, 'reject_post'])->middleware('auth')->name('admin');
 
+// user page routes
 Route::get('/admin',[adminController::class, 'admin'])->middleware('auth')->name('admin');
 Route::get('/user',[adminController::class, 'user'])->middleware('auth')->name('user');
 Route::post('/add_user',[adminController::class, 'add_user'])->middleware('auth')->name('user');
 
+// user routes
 Route::get('/all_user',[adminController::class, 'all_user'])->middleware('auth');
 Route::get('/edit_page/{id}',[adminController::class, 'edit_page'])->middleware('auth');
 Route::put('/edit_user/{id}',[adminController::class, 'edit_user'])->middleware('auth');
+//inactive ---- Route::get('/delete_user',[adminController::class, 'delete_user'])->middleware('auth');
 
-Route::get('/delete_user',[adminController::class, 'delete_user'])->middleware('auth');
-
+// setting page routes
 Route::get('/settings_page',[adminController::class, 'settings_page'])->middleware('auth');
 Route::put('/settings',[adminController::class, 'settings'])->middleware('auth');
 
-
-
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
-
-
-Route::get('/add_post', [adminController::class, 'post_page'])->middleware('auth');
-
+// end routes
 require __DIR__.'/auth.php';
 

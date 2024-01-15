@@ -1,4 +1,14 @@
 @extends('admin.layout')
+
+@section('title')
+    @foreach ($dashboard as $dashboard)
+    <title>{{$dashboard->title}}</title>
+    @endforeach
+
+@endsection
+@section('logo')
+<img src="logo/{{$dashboard->logo}}" alt="logo">
+@endsection
 @section('main')
 <div class="page-breadcrumb">
     <div class="row align-items-center">
@@ -16,27 +26,53 @@
     </div>
 </div>
 <div class="container-fluid">
+    @if(session()->has('message'))
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert" area-hidden="true">X</button>
+        {{session()->get('message')}}
+    </div>
+    @endif
+    @if(session()->has('message'))
+        <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert" area-hidded="true">X</button>
+        {{session()->get('message')}}
+        </div>
+        @endif
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="text-center">Add Post</h4>
+        <div class="col-sm-8">
+            <div class="card mt-3 p-3">
+                <div class="card-header text-center">
+                    <h3>Add Post</h3>
                 </div>
                 <div class="card-body">
-                    <form action="{{url('/add_post')}}" method="POST">
+                    <form action="/add_post" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-                          </div>
-                          <div class="mb-3">
-                            <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                          </div>
+                        <div class="form-group mb-3">
+                            <label>title</label>
+                            <input type="text" name="title" class="form-control border-secondary" value="{{old('title')}}">
+                            @if($errors->has('title'))
+                            <span class="text-danger">{{$errors->first('title')}}</span>
+                            @endif
+                        </div>
+                        <div class="form-group mb-3">
+                            <label>Description</label>
+                            <textarea name="description" rows="4" class="form-control border-secondary" value="{{old('description')}}"></textarea>
+                            @if($errors->has('description'))
+                            <span class="text-danger">{{$errors->first('description')}}</span>
+                            @endif
+                        </div>
+                        <div class="form-group mb-3">
+                            <label>Image</label>
+                            <input type="file" name="image" class="form-control border-secondary">
+                            @if($errors->has('image'))
+                            <span class="text-danger">{{$errors->first('image')}}</span>
+                            @endif
+                        </div>
+                        <button type="submit" class="btn btn-dark">Submit</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-</div>
+  </div>
 @endsection

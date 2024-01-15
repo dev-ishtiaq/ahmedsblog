@@ -6,23 +6,59 @@ use Illuminate\Http\Request;
 
 use App\Models\User;
 
+use App\Models\Post;
+
 use App\Models\dashboard;
 
 use Illuminate\Support\Facades\Auth;
 
 class adminController extends Controller
 {
+    public function post_page()
+    {
+        $post = post::all();
+        $dashboard = dashboard::all();
+        return view('admin.post_page', compact('dashboard','post'));
+    }
+    public function add_post(Request $request)
+    {
+        $user = Auth()->user();
+        $user_id = $user->id;
+        $name = $user->name;
+        $usertype = $user->usertype;
+
+        $post = new Post;
+
+        $post->title        = $request->title;
+        $post->description  = $request->description;
+        $post->description  = $request->description;
+        $post->post_status  = 'active';
+        $post->user_id      = $user_id;
+        $post->name         = $name;
+        $post->usertype     = $usertype;
+
+
+        $imageName = time().'.'.$request->image->extension();
+        $request->image->move('postimage', $imageName);
+        $post->image = $imageName;
+
+        $post->save();
+        return redirect()->back()->with('message', 'post created successfully!');
+
+    }
+   
+
     public function admin()
     {
         $dashboard = dashboard::all();
-
+        $post = post::all();
         $usertype=Auth()->user()->usertype;
         if($usertype=='admin')
         {
             return view('admin.home', compact('dashboard'));
         }
         else if($usertype=='user'){
-            return view('admin.layout');
+            return view('admin.layout', compact('post'));
         }
         else{
             return redirect()->back();
@@ -75,30 +111,6 @@ class adminController extends Controller
     }
 
 
-    public function post_page()
-    {
-        $dashboard = dashboard::all();
-        return view('admin.post_page', compact('dashboard'));
-    }
-    public function add_post(Request $request)
-    {
-        $user = Auth->user();
-        $user_id = $user->id;
-        $name = $user->name;
-        $usertype = $user->usertype;
-
-        $post = new Post;
-
-        $post->title = $request->title;
-        $post->description = $request->description;
-        $post->description = $request->description;
-        $post->post_status = 'active';
-        $post->description = $request->description;
-
-        $imageName = time().'.'.$request->image->extension();
-        $request->image->move('postImage', $imagename);
-        $post->image = $imageName;
-    }
 
 
     public function settings_page ()
@@ -109,6 +121,7 @@ class adminController extends Controller
     }
     public function settings (Request $request)
     {
+        $dashboard = new dashboard;
         $dashboard->title = $request->title;
         $dashboard->profile_pic = "no";
 

@@ -100,6 +100,7 @@
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
+
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#"
                                 id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="{{asset('adminpanel/assets/images/users/1.jpg')}}" alt="user"
@@ -128,14 +129,14 @@
                                 href="{{url('/admin')}}" aria-expanded="false"><i class="mdi me-2 mdi-gauge"></i><span
                                     class="hide-menu">Dashboard</span></a></li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{url('/add_post')}}"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{url('/post_page')}}"
                                 aria-expanded="false">
                                 <i class="fa-solid fa-plus"></i>
                                 <span class="hide-menu">Add Post</span>
                             </a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="table-basic.html" aria-expanded="false"><i class="mdi me-2 mdi-table"></i><span
+                                href="{{url('/all_post')}}" aria-expanded="false"><i class="mdi me-2 mdi-table"></i><span
                                     class="hide-menu">All Post</span></a></li>
                         <li class="sidebar-item dropdown"> <a class="sidebar-link dropdown-toggle waves-effect waves-dark sidebar-link"
                                 href="{{url('/all_user')}}" role="button" data-bs-toggle="dropdown" aria-expanded="false">

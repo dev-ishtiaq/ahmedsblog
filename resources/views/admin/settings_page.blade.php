@@ -1,9 +1,7 @@
 @extends('admin.layout')
 
 @section('logo')
-    @foreach ($dashboard2 as $dashboard2)
-    <img src="logo/{{$dashboard2->logo}}" height="60" width="120" alt="homepage" class="dark-logo" />
-    @endforeach
+    <img src="logo/{{$dashboard->logo}}" alt="logo" class="dark-logo" />
 @endsection
 
 @section('main')
