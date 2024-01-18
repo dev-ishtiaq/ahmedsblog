@@ -67,6 +67,7 @@ class adminController extends Controller
         }
         else{
             return redirect()->back();
+            
         }
     }
 
