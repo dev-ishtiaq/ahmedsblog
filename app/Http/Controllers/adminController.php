@@ -54,6 +54,7 @@ class adminController extends Controller
         return view('admin.all_post', compact('post','dashboard'));
     }
 
+
     public function admin()
     {
         $dashboard = dashboard::all();
