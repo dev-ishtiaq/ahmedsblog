@@ -39,7 +39,7 @@
                             <h2 class="text-center">All Post</h2>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr class="bg-dark">
                                 <th>SL</th>
                                 <th>Name</th>
                                 <th>Description</th>
