@@ -30,7 +30,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="text-end">
-                <a href="/post_page" class="btn btn-dark"><i class="fa-solid fa-plus"></i> Add Post</a>
+                <a href="/post_page" class="btn btn-dark"><i class="text-center fa-solid fa-plus"></i> Add Post</a>
             </div>
             <div class="card mt-4">
                 <div class="card-body">
