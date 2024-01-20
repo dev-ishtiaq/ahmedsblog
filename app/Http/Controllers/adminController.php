@@ -62,6 +62,33 @@ class adminController extends Controller
         return view('admin.post_edit_page', compact('post', 'dashboard'));
     }
 
+    public function edit_post(Request $request, $id)
+    {
+
+
+        $post = Post::find($id);
+
+        $post->title        = $request->title;
+        $post->description  = $request->description;
+
+
+
+        $imageName = time().'.'.$request->image->extension();
+        $request->image->move('postimage', $imageName);
+        $post->image = $imageName;
+
+        $post->save();
+        return redirect()->back()->with('message', 'post updated successfully!');
+
+    }
+    public function delete_post ($id)
+    {
+        $post = Post::find($id);
+
+        $post->delete($id);
+        return redirect()->back()->with('dlt_message', 'post deleted succesfully!');
+    }
+
 
 
 

@@ -27,17 +27,11 @@
 </div>
 <div class="container-fluid">
     @if(session()->has('message'))
-    <div class="alert alert-success">
-        <button type="button" class="close" data-dismiss="alert" area-hidden="true">X</button>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
         {{session()->get('message')}}
-    </div>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
     @endif
-    @if(session()->has('message'))
-        <div class="alert alert-success">
-            <button type="button" class="close" data-dismiss="alert" area-hidded="true">X</button>
-        {{session()->get('message')}}
-        </div>
-        @endif
     <div class="row justify-content-center">
         <div class="col-sm-8">
             <div class="card mt-3 p-3">

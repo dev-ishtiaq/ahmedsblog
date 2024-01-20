@@ -1,3 +1,5 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 @extends('admin.layout')
 
 @section('title')
@@ -27,8 +29,20 @@
     </div>
 </div>
 <div class="container-fluid">
+    @if(session()->has('message'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{session()->get('message')}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    @endif
+    @if(session()->has('dlt_message'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{session()->get('dlt_message')}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    @endif
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-12">
             <div class="text-end">
                 <a href="/post_page" class="btn btn-dark"><i class="text-center fa-solid fa-plus"></i> Add Post</a>
             </div>
@@ -58,7 +72,10 @@
                                 <td>{{$post->post_status}}</td>
                                 <td>{{$post->usertype}}</td>
                                 <td><img class="rounded-circle border border-success" src="postimage/{{$post->image}}" height="50" width="50" alt="image"></td>
-                                <td><a href="{{url('post_edit_page', $post->id)}}" class="btn btn-success btn-sm">Edit</a></td>
+                                <td>
+                                    <a href="{{url('post_edit_page', $post->id)}}" class="d-block mb-1 btn btn-success btn-sm">Edit</a>
+                                    <a href="{{url('delete_post', $post->id)}}" class="d-block mb-1 btn btn-warning btn-sm" onclick="confirmation(event)">Delete</a>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -69,3 +86,26 @@
     </div>
 </div>
 @endsection
+
+<script type="text/javascript">
+    function confirmation(ev)
+    {
+        ev.preventDefault();
+        var urlToRedirect=ev.currentTarget.getAttribute('href');
+        console.log(urlToRedirect);
+        sweetAlert({
+            title       : "Are you confirm to delete this?",
+            text        : "You won't able to revert this",
+            icon        : "warning",
+            buttons      : true,
+            dangerMode  : true,
+        })
+        .then((willCancel)=>
+        {
+            if(willCancel)
+            {
+                window.location.href=urlToRedirect;
+            }
+        });
+    }
+</script>
