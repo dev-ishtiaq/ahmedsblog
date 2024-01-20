@@ -41,15 +41,26 @@
                         <tbody>
                             <tr class="bg-dark">
                                 <th>SL</th>
-                                <th>Name</th>
+                                <th>Title</th>
                                 <th>Description</th>
+                                <th>Post by</th>
+                                <th>Post Status</th>
+                                <th>User Type</th>
+                                <th>Image</th>
+                                <th>Action</th>
                             </tr>
+                            @foreach ($post as $post)
                             <tr>
-                                <td>01</td>
-                                <td>Ishtiaq</td>
-                                <td>Des.......</td>
-
+                                <td>{{$loop->index +1}}</td>
+                                <td>{{$post->title}}</td>
+                                <td>{{$post->description}}</td>
+                                <td>{{$post->name}}</td>
+                                <td>{{$post->post_status}}</td>
+                                <td>{{$post->usertype}}</td>
+                                <td><img class="rounded-circle border border-success" src="postimage/{{$post->image}}" height="50" width="50" alt="image"></td>
+                                <td><a href="" class="btn btn-success btn-sm">Edit</a></td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
