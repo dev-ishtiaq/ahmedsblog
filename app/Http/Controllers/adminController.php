@@ -46,13 +46,27 @@ class adminController extends Controller
 
     }
 
-    public function all_post ()
+    public function all_post()
     {
         $dashboard = dashboard::all();
         $post = post::all();
         return view('admin.all_post', compact('post','dashboard'));
     }
 
+    public function post_edit_page($id)
+    {
+        $dashboard = dashboard::all();
+
+        // main ------------
+        $post = Post::find($id);
+        return view('admin.post_edit_page', compact('post', 'dashboard'));
+    }
+
+
+
+
+
+    // admin dashboard ----------------------
     public function admin()
     {
         $dashboard = dashboard::all();
@@ -72,7 +86,7 @@ class adminController extends Controller
     }
 
 
-    // -----------
+    // user ---------------------
     public function user()
     {
         $dashboard = dashboard::all();
@@ -118,7 +132,7 @@ class adminController extends Controller
 
 
 
-
+    // setting --------------
     public function settings_page ()
     {
         $dashboard = new dashboard;

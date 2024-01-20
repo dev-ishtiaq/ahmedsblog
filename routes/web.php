@@ -40,7 +40,7 @@ Route::get('/contact', function () {
 Route::get('/post_page',[adminController::class, 'post_page'])->middleware('auth')->name('admin');
 Route::post('/add_post',[adminController::class, 'add_post'])->middleware('auth')->name('admin');
 Route::get('/all_post',[adminController::class, 'all_post'])->middleware('auth')->name('admin');
-Route::get('/edit_page/{id}',[adminController::class, 'edit_page'])->middleware('auth')->name('admin');
+Route::get('/post_edit_page/{id}',[adminController::class, 'post_edit_page'])->middleware('auth')->name('admin');
 Route::post('/edit_post/{id}',[adminController::class, 'edit_post'])->middleware('auth')->name('admin');
 Route::get('/delete_post/{id}',[adminController::class, 'delete_post'])->middleware('auth')->name('admin');
 Route::get('/accept_post/{id}',[adminController::class, 'accept_post'])->middleware('auth')->name('admin');

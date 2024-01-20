@@ -58,7 +58,7 @@
                                 <td>{{$post->post_status}}</td>
                                 <td>{{$post->usertype}}</td>
                                 <td><img class="rounded-circle border border-success" src="postimage/{{$post->image}}" height="50" width="50" alt="image"></td>
-                                <td><a href="" class="btn btn-success btn-sm">Edit</a></td>
+                                <td><a href="{{url('post_edit_page', $post->id)}}" class="btn btn-success btn-sm">Edit</a></td>
                             </tr>
                             @endforeach
                         </tbody>
